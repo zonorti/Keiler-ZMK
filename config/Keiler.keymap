@@ -24,36 +24,11 @@
     debounce-release-ms = <15>;
 };
 
-&mt {
-    flavor = "balanced";
-    tapping_term_ms = <120>;
-    quick-tap-ms = <200>;
-};
-
-&lt {
-    flavor = "hold-preferred";
-    tapping_term_ms = <120>;
-    quick-tap-ms = <200>;
-};
-
 / {
     macros {
         // Macro to send LCTRL + LSHIFT + F11
         // This is equivalent to &kp LCTL(LSFT(F11)) but using explicit macro steps
         // Macro to send LCTRL + LSHIFT + F12
-    };
-
-    behaviors {
-        enter: enter_mod {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <120>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-
-            retro-tap;
-        };
     };
 
     combos { compatible = "zmk,combos"; };
