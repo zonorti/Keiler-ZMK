@@ -40,66 +40,10 @@
     macros {
         // Macro to send LCTRL + LSHIFT + F11
         // This is equivalent to &kp LCTL(LSFT(F11)) but using explicit macro steps
-
-        lctrl_lshift_f11: lctrl_lshift_f11 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>; // Small delay between actions, can be 0
-            tap-ms = <10>;  // How long a "tap" is held, can be 0 for very quick taps
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_press>,
-                <&kp LSHFT>,
-                <&macro_tap>,
-                <&kp F11>,
-                <&macro_release>,
-                <&kp LSHFT>,
-                <&macro_release>,
-                <&kp LCTRL>;
-        };
-
         // Macro to send LCTRL + LSHIFT + F12
-
-        lctrl_lshift_f12: lctrl_lshift_f12 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_press>,
-                <&kp LSHFT>,
-                <&macro_tap>,
-                <&kp F12>,
-                <&macro_release>,
-                <&kp LSHFT>,
-                <&macro_release>,
-                <&kp LCTRL>;
-        };
     };
 
     behaviors {
-        lm: lm {
-            compatible = "zmk,behavior-macro-two-param";
-            wait-ms = <0>;
-            tap-ms = <0>;
-            #binding-cells = <2>;
-            bindings =
-                <&macro_param_1to1>,
-                <&macro_press>,
-                <&mo MACRO_PLACEHOLDER &macro_param_2to1>,
-                <&macro_press>,
-                <&kp MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_param_2to1>,
-                <&macro_release>,
-                <&kp MACRO_PLACEHOLDER &macro_param_1to1>,
-                <&macro_release>,
-                <&mo MACRO_PLACEHOLDER>;
-        };
-
         enter: enter_mod {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -112,85 +56,35 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        combo_open_param {
-            timeout-ms = <120>;
-            key-positions = <22 23>;
-            bindings = <&kp LPAR>;
-        };
-
-        combo_tick {
-            timeout-ms = <120>;
-            key-positions = <0 1>;
-            bindings = <&kp GRAVE>;
-        };
-
-        combo_s_tab {
-            timeout-ms = <120>;
-            key-positions = <11 13>;
-            bindings = <&kp TAB>;
-        };
-
-        combo_close_param {
-            timeout-ms = <120>;
-            key-positions = <26 27>;
-            bindings = <&kp RPAR>;
-        };
-
-        combo_open_block {
-            timeout-ms = <120>;
-            key-positions = <21 22>;
-            bindings = <&kp LBKT>;
-        };
-
-        combo_close_block {
-            timeout-ms = <120>;
-            key-positions = <27 28>;
-            bindings = <&kp RBKT>;
-        };
-
-        combo_close_bracket {
-            timeout-ms = <120>;
-            key-positions = <28 29>;
-            bindings = <&kp BSLH>;
-        };
-
-        combo_backslash {
-            timeout-ms = <120>;
-            key-positions = <20 21>;
-            bindings = <&kp FSLH>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
 
         base {
             bindings = <
-  &kp Q    &kp W               &kp E              &kp R           &kp T            &kp Y      &kp U       &kp I              &kp O    &kp P
-  &lt 2 A  &mt LEFT_CONTROL S  &mt LEFT_GUI D     &mt LEFT_ALT F  &lt 2 G          &lt 2 H    &mt RIGHT_ALT J       &mt RIGHT_GUI K              &mt RIGHT_CONTROL L    &lt 2 RET
-  &lt 1 Z  &kp X               &kp C              &kp V           &kp B            &kp N      &kp M       &kp COMMA          &kp DOT  &lt 1 SINGLE_QUOTE
-                               &lctrl_lshift_f11  &lt 1 ESC       &mt LGUI BSPC    &kp SPACE  &kp LSHIFT  &lctrl_lshift_f12
+  &kp Q    &kp W               &kp E           &kp R           &kp T            &kp Y      &kp U            &kp I            &kp O                &kp P
+  &lt 2 A  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &lt 2 G          &lt 2 H    &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &lt 2 RET
+  &lt 1 Z  &kp X               &kp C           &kp V           &kp B            &kp N      &kp M            &kp COMMA        &kp DOT              &lt 1 SINGLE_QUOTE
+                               &to 2           &lt 1 ESC       &mt LGUI BSPC    &kp SPACE  &kp LSHIFT       &to 2
             >;
         };
 
         sym {
             bindings = <
   &kp N1    &kp N2     &kp N3    &kp N4     &kp N5       &kp N6     &kp N7     &kp N8    &kp N9  &kp N0
-  &kp EXCL  &kp QMARK  &kp HASH  &kp COLON  &kp PLUS     &kp MINUS  &kp EQUAL  &kp SEMI  &kp AT  &kp GRAVE
+  &kp EXCL  &mt LEFT_CONTROL QMARK  &mt LEFT_GUI HASH  &mt LEFT_ALT COLON  &kp PLUS     &kp MINUS  &mt RIGHT_ALT EQUAL  &mt RIGHT_GUI SEMI  &mt RIGHT_CONTROL AT  &kp GRAVE
   &kp BSLH  &kp TILDE  &kp STAR  &kp AMPS   &kp TILDE    &kp UNDER  &kp LEFT   &kp DOWN  &kp UP  &kp RIGHT
-                       &none     &mo 1      &kp LALT     &kp LCTRL  &kp PRCNT  &none
+                       &none     &none      &none        &none      &kp PRCNT  &none
             >;
         };
 
         sys {
             bindings = <
-  &trans  &trans  &trans  &trans  &bootloader     &bootloader   &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &trans          &trans        &trans  &trans  &trans  &trans
-  &trans  &trans  &trans  &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans  &trans  &trans
-                  &trans  &trans  &trans          &trans        &trans  &trans
+  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans  &trans  &trans  &kp BACKSPACE
+  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &trans  &trans  &trans  &trans
+  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans  &trans  &trans
+                      &trans           &trans  &trans          &trans        &trans  &trans
             >;
         };
     };
