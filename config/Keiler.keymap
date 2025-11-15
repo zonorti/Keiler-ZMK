@@ -56,9 +56,9 @@
 
         sys {
             bindings = <
-  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans  &trans  &trans  &kp BACKSPACE
-  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &trans  &trans  &trans  &trans
-  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans  &trans  &trans
+  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans  &bt BT_CLR  &trans  &kp BACKSPACE
+  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &trans  &trans      &trans  &trans
+  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans      &trans  &trans
                       &trans           &trans  &trans          &trans        &trans  &trans
             >;
         };
