@@ -4,6 +4,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define SYM 1
 #define NUM 2
@@ -77,16 +78,16 @@
   &kp N1    &kp N2                  &kp N3             &kp N4              &kp N5            &kp N6           &kp N7               &kp N8              &kp N9                &kp N0
   &kp EXCL  &mt LEFT_CONTROL QMARK  &mt LEFT_GUI HASH  &mt LEFT_ALT COLON  &kp PLUS          &kp MINUS        &mt RIGHT_ALT EQUAL  &mt RIGHT_GUI SEMI  &mt RIGHT_CONTROL AT  &kp GRAVE
   &kp BSLH  &kp TILDE               &kp STAR           &kp AMPS            &kp TILDE         &kp UNDER        &kp LEFT             &kp DOWN            &kp UP                &kp RIGHT
-                                    &none              &none               &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp PRCNT            &none
+                                    &kp SLASH          &none               &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp PRCNT            &kp SLASH
             >;
         };
 
         sys {
             bindings = <
-  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans  &bt BT_CLR  &trans  &kp BACKSPACE
-  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &trans  &trans      &trans  &trans
-  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans      &trans  &trans
-                      &trans           &trans  &trans          &trans        &trans  &trans
+  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans          &bt BT_CLR      &trans           &kp BACKSPACE
+  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans
+  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
+                      &trans           &trans  &trans          &trans        &trans          &trans
             >;
         };
     };
