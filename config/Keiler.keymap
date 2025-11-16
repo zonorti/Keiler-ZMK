@@ -46,6 +46,8 @@
             label = "BCKS_P";
             #binding-cells = <0>;
             bindings = <&kp P>, <&kp BACKSPACE>;
+
+            tapping-term-ms = <300>;
         };
 
         tab_a: tab_a {
@@ -53,6 +55,8 @@
             label = "TAB_A";
             #binding-cells = <0>;
             bindings = <&kp A>, <&kp TAB>;
+
+            tapping-term-ms = <300>;
         };
     };
 
@@ -61,28 +65,28 @@
 
         base {
             bindings = <
-&esc_q  &kp W               &kp E           &kp R           &kp T                 &kp Y                  &kp U            &kp I            &kp O                &bcks_p
-&tab_a  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &lt 2 G               &lt 2 H                &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &kp ENTER
-&kp Z   &kp X               &kp C           &kp V           &kp B                 &kp N                  &kp M            &kp COMMA        &kp DOT              &kp SINGLE_QUOTE
-                            &mo 2           &lt 1 ESC       &mt LEFT_SHIFT SPACE  &mt RIGHT_SHIFT SPACE  &lt 1 BACKSPACE  &mo 2
+  &esc_q  &kp W               &kp E           &kp R           &kp T                   &kp Y                  &kp U            &kp I            &kp O                &bcks_p
+  &tab_a  &mt LEFT_CONTROL S  &mt LEFT_GUI D  &mt LEFT_ALT F  &lt 2 G                 &lt 2 H                &mt RIGHT_ALT J  &mt RIGHT_GUI K  &mt RIGHT_CONTROL L  &kp ENTER
+  &kp Z   &kp X               &kp C           &kp V           &kp B                   &kp N                  &kp M            &kp COMMA        &kp DOT              &kp SINGLE_QUOTE
+                              &mo 2           &lt 1 ESC       &mt LEFT_SHIFT SPACE    &mt RIGHT_SHIFT SPACE  &lt 1 BACKSPACE  &mo 2
             >;
         };
 
         sym {
             bindings = <
-&kp N1    &kp N2                  &kp N3             &kp N4              &kp N5     &kp N6     &kp N7               &kp N8              &kp N9                &kp N0
-&kp EXCL  &mt LEFT_CONTROL QMARK  &mt LEFT_GUI HASH  &mt LEFT_ALT COLON  &kp PLUS   &kp MINUS  &mt RIGHT_ALT EQUAL  &mt RIGHT_GUI SEMI  &mt RIGHT_CONTROL AT  &kp GRAVE
-&kp BSLH  &kp TILDE               &kp STAR           &kp AMPS            &kp TILDE  &kp UNDER  &kp LEFT             &kp DOWN            &kp UP                &kp RIGHT
-                                  &none              &none               &none      &none      &kp PRCNT            &none
+  &kp N1    &kp N2                  &kp N3             &kp N4              &kp N5            &kp N6           &kp N7               &kp N8              &kp N9                &kp N0
+  &kp EXCL  &mt LEFT_CONTROL QMARK  &mt LEFT_GUI HASH  &mt LEFT_ALT COLON  &kp PLUS          &kp MINUS        &mt RIGHT_ALT EQUAL  &mt RIGHT_GUI SEMI  &mt RIGHT_CONTROL AT  &kp GRAVE
+  &kp BSLH  &kp TILDE               &kp STAR           &kp AMPS            &kp TILDE         &kp UNDER        &kp LEFT             &kp DOWN            &kp UP                &kp RIGHT
+                                    &none              &none               &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp PRCNT            &none
             >;
         };
 
         sys {
             bindings = <
-&kp ESCAPE  &trans  &trans           &trans  &bootloader   &bootloader   &trans  &bt BT_CLR  &trans  &kp BACKSPACE
-&kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans        &trans        &trans  &trans      &trans  &trans
-&trans      &trans  &trans           &trans  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans      &trans  &trans
-                    &trans           &trans  &trans        &trans        &trans  &trans
+  &kp ESCAPE  &trans  &trans           &trans  &bootloader     &bootloader   &trans  &bt BT_CLR  &trans  &kp BACKSPACE
+  &kp TAB     &trans  &kp PRINTSCREEN  &trans  &trans          &trans        &trans  &trans      &trans  &trans
+  &trans      &trans  &trans           &trans  &bt BT_SEL 0    &bt BT_SEL 1  &trans  &trans      &trans  &trans
+                      &trans           &trans  &trans          &trans        &trans  &trans
             >;
         };
     };
